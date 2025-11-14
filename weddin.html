@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding of Shaifali & Vivek | Rajput Family</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Noto+Serif+Devanagari:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ivory: #FFFEF7;
+            --gold: #D4AF37;
+            --maroon: #800020;
+            --dark-maroon: #5C0016;
+            --light-gold: #F4E4C1;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--ivory);
+            color: var(--dark-maroon);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .hindi-text {
+            font-family: 'Noto Serif Devanagari', serif;
+        }
+
+        /* Landing Page / Splash Screen */
+        #splashScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--dark-maroon) 100%);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        #splashScreen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .splash-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: bgPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .splash-content {
+            position: relative;
+            z-index: 10001;
+            text-align: center;
+            color: var(--ivory);
+            animation: contentFadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes contentFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .om-symbol {
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-family: 'Noto Serif Devanagari', serif;
+            animation: omGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes omGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 40px rgba(212, 175, 55, 0.9);
+                transform: scale(1.05);
+            }
+        }
+
+        .splash-invitation {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            color: var(--light-gold);
+            animation: fadeSlideIn 1s ease-out 0.7s both;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .splash-names {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            animation: fadeSlideIn 1s ease-out 0.9s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .splash-blessing {
+            font-size: 1.3rem;
+            font-family: 'Noto Serif Devanagari', serif;
+            color: var(--light-gold);
+            margin-bottom: 50px;
+            animation: fadeSlideIn 1s ease-out 1.1s both;
+        }
+
+        .enter-button {
+            background: var(--gold);
+            color: var(--dark-maroon);
+            border: 2px solid var(--gold);
+            padding: 18px 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 3px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: fadeSlideIn 1s ease-out 1.3s both;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+        }
+
+        .enter-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .enter-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Gate Animation */
+        .gate-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10002;
+        }
+
+        .gate {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--dark-maroon) 0%, var(--maroon) 50%, var(--dark-maroon) 100%);
+            transition: transform 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gate-left {
+            left: 0;
+            border-right: 4px solid var(--gold);
+            transform-origin: left center;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gate-right {
+            right: 0;
+            border-left: 4px solid var(--gold);
+            transform-origin: right center;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gate.open.gate-left {
+            transform: perspective(1500px) rotateY(-105deg);
+        }
+
+        .gate.open.gate-right {
+            transform: perspective(1500px) rotateY(105deg);
+        }
+
+        /* Ornamental Pattern on Gates */
+        .gate-ornament {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80%;
+            height: 80%;
+            opacity: 0.15;
+            background-image: 
+                repeating-linear-gradient(0deg, var(--gold) 0px, transparent 3px, transparent 30px),
+                repeating-linear-gradient(90deg, var(--gold) 0px, transparent 3px, transparent 30px),
+                radial-gradient(circle, var(--gold) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px;
+        }
+
+        .gate-left .gate-ornament {
+            right: 5%;
+        }
+
+        .gate-right .gate-ornament {
+            left: 5%;
+        }
+
+        .gate-center-ornament {
+            position: absolute;
+            top: 50%;
+            width: 80px;
+            height: 300px;
+            background: linear-gradient(to bottom, var(--gold), var(--light-gold), var(--gold));
+            clip-path: polygon(50% 0%, 70% 3%, 90% 10%, 95% 20%, 100% 50%, 95% 80%, 90% 90%, 70% 97%, 50% 100%, 30% 97%, 10% 90%, 5% 80%, 0% 50%, 5% 20%, 10% 10%, 30% 3%);
+            opacity: 0.9;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .gate-left .gate-center-ornament {
+            right: -40px;
+            transform: translateY(-50%);
+        }
+
+        .gate-right .gate-center-ornament {
+            left: -40px;
+            transform: translateY(-50%);
+        }
+
+        .gate-border-design {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            width: 30px;
+            background: repeating-linear-gradient(
+                0deg,
+                var(--gold) 0px,
+                var(--gold) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            opacity: 0.3;
+        }
+
+        .gate-left .gate-border-design {
+            right: 20px;
+        }
+
+        .gate-right .gate-border-design {
+            left: 20px;
+        }
+
+        /* Main Website Styles */
+        #mainWebsite {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+
+        #mainWebsite.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px 100px;
+            position: relative;
+        }
+
+        .page.active {
+            display: block;
+            animation: pageSlideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes pageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(to right, var(--gold) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--gold) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--maroon);
+            color: var(--ivory);
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .menu-btn {
+            background: var(--gold);
+            color: var(--dark-maroon);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--ivory);
+            border-top: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px 5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 4px;
+            margin: 0 3px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active {
+            background: var(--light-gold);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            color: var(--dark-maroon);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .menu-content {
+            background: var(--ivory);
+            padding: 50px 40px;
+            width: 90%;
+            max-width: 500px;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.5);
+            position: relative;
+            animation: menuSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes menuSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .menu-content h3 {
+            color: var(--maroon);
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 20px;
+        }
+
+        .menu-link {
+            display: block;
+            padding: 20px 25px;
+            margin: 10px 0;
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.08), transparent);
+            border-left: 5px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-align: left;
+            color: var(--dark-maroon);
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .menu-link:hover {
+            background: var(--light-gold);
+            border-left-width: 10px;
+            padding-left: 30px;
+            transform: translateX(5px);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--maroon);
+            color: var(--ivory);
+            border: none;
+            width: 45px;
+            height: 45px;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .close-menu:hover {
+            background: var(--dark-maroon);
+            transform: rotate(90deg);
+        }
+
+        /* Content Styles */
+        .ornamental-line {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 30px auto;
+        }
+
+        .ornamental-line-short {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--maroon);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--dark-maroon);
+            margin: 30px 0 20px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--dark-maroon);
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(128, 0, 32, 0.03));
+            border-left: 3px solid var(--gold);
+            border-right: 3px solid var(--gold);
+            max-width: 700px;
+        }
+
+        .events-block {
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(to bottom, rgba(244, 228, 193, 0.1), transparent);
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .event-item {
+            font-size: 1.2rem;
+            margin: 12px 0;
+            color: var(--dark-maroon);
+            font-weight: 400;
+        }
+
+        .event-date {
+            color: var(--maroon);
+            font-weight: 600;
+        }
+
+        .note {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--dark-maroon);
+            margin-top: 25px;
+            opacity: 0.8;
+        }
+
+        .formal-text {
+            font-size: 1.15rem;
+            line-height: 2.3;
+            margin: 30px auto;
+            max-width: 650px;
+            text-align: center;
+        }
+
+        .formal-text-large {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .names-column {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .name-item {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            color: var(--dark-maroon);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .blessing-text {
+            font-size: 1.3rem;
+            line-height: 2.3;
+            margin: 40px auto;
+            max-width: 700px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(128, 0, 32, 0.05));
+            border: 2px solid var(--light-gold);
+        }
+
+        .venue-details {
+            margin: 30px auto;
+            text-align: left;
+            max-width: 700px;
+        }
+
+        .venue-item {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 15px 0;
+            padding: 20px;
+            background: rgba(244, 228, 193, 0.1);
+            border-left: 3px solid var(--gold);
+        }
+
+        .placeholder {
+            font-size: 1.05rem;
+            margin: 12px 0;
+            color: var(--maroon);
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            color: var(--maroon);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .header-title {
+                font-size: 1rem;
+            }
+            .splash-names {
+                font-size: 2.8rem;
+            }
+            .splash-invitation {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            .om-symbol {
+                font-size: 3.5rem;
+            }
+            .welcome-message,
+            .formal-text,
+            .blessing-text {
+                font-size: 1.05rem;
+                padding: 20px;
+            }
+            .menu-content {
+                padding: 40px 25px;
+            }
+            .nav-label {
+                font-size: 0.7rem;
+            }
+            .enter-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .bottom-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen with Gate Animation -->
+    <div id="splashScreen">
+        <div class="splash-bg-pattern"></div>
+        
+        <div class="gate-container">
+            <div class="gate gate-left" id="gateLeft">
+                <div class="gate-ornament"></div>
+                <div class="gate-center-ornament"></div>
+                <div class="gate-border-design"></div>
+            </div>
+            <div class="gate gate-right" id="gateRight">
+                <div class="gate-ornament"></div>
+                <div class="gate-center-ornament"></div>
+                <div class="gate-border-design"></div>
+            </div>
+        </div>
+        
+        <div class="splash-content">
+            <div class="om-symbol">ॐ</div>
+            <p class="splash-invitation">CORDIALLY INVITE YOU TO</p>
+            <h1 class="splash-names">Shaifali & Vivek</h1>
+            <p class="splash-blessing hindi-text">शुभ विवाह समारोह</p>
+            <button class="enter-button" id="enterBtn">ENTER</button>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="mainWebsite">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">Shaifali & Vivek</div>
+            <button class="menu-btn" id="menuBtn">EXPLORE</button>
+        </div>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-content">
+                <button class="close-menu" id="closeMenuBtn">×</button>
+                <h3>Sections</h3>
+                <div class="menu-link" data-page="home">Home</div>
+                <div class="menu-link" data-page="couple">About the Couple</div>
+                <div class="menu-link" data-page="hosts">Hosts</div>
+                <div class="menu-link" data-page="family">Family Members</div>
+                <div class="menu-link" data-page="blessings">Blessings</div>
+                <div class="menu-link" data-page="contact">Event Details</div>
+                <div class="menu-link" data-page="wellwishers">Well-wishers</div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation (Mobile) -->
+        <div class="bottom-nav">
+            <div class="nav-item active" data-page="home">
+                <div class="nav-label">HOME</div>
+            </div>
+            <div class="nav-item" data-page="couple">
+                <div class="nav-label">COUPLE</div>
+            </div>
+            <div class="nav-item" data-page="hosts">
+                <div class="nav-label">HOSTS</div>
+            </div>
+            <div class="nav-item" data-page="family">
+                <div class="nav-label">FAMILY</div>
+            </div>
+            <div class="nav-item" data-page="more">
+                <div class="nav-label">MORE</div>
+            </div>
+        </div>
+
+        <!-- Page 1: Home / Welcome -->
+        <div id="home" class="page active">
+            <div class="container">
+                <!-- Om Symbol -->
+                <svg width="120" height="120" viewBox="0 0 120 120" style="margin: 20px auto; display: block;">
+                    <defs>
+                        <linearGradient id="ganeshGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#F4E4C1;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="55" fill="var(--maroon)" opacity="0.1"/>
+                    <text x="60" y="75" font-family="Noto Serif Devanagari, serif" font-size="48" fill="url(#ganeshGold)" text-anchor="middle" font-weight="700">ॐ</text>
+                    <circle cx="60" cy="60" r="58" fill="none" stroke="var(--gold)" stroke-width="2" opacity="0.5"/>
+                </svg>
+                
+                <p class="hindi-text" style="font-size: 1.4rem; color: var(--maroon); margin: 20px 0; font-weight: 600;">॥ श्री गणेशाय नमः ॥</p>
+                
+                <h1>Welcome to the Wedding Celebration of<br>Shaifali & Vivek</h1>
+                <div class="ornamental-line"></div>
+                <p class="subtitle">Two souls, one journey, blessed with love and family.</p>
+                
+                <div class="welcome-message hindi-text">
+                    <p>रजपूत परिवार की ओर से हार्दिक स्वागत</p>
+                    <div class="ornamental-line-short"></div>
+                    <p>हमारी प्रिय शैफाली और विवेक के इस शुभ विवाह उत्सव में आपका हार्दिक अभिनंदन।</p>
+                    <p>आपकी उपस्थिती हमारे लिए वरदान समान है।</p>
+                </div>
+
+                <div class="events-block">
+                    <h3>Celebration Dates</h3>
+                    <div class="ornamental-line-short"></div>
+                    <div class="event-item"><span class="event-date">19 Nov 2025</span> — Sangeet</div>
+                    <div class="event-item"><span class="event-date">21 Nov 2025</span> — Tel Ceremony</div>
+                    <div class="event-item"><span class="event-date">22 Nov 2025</span> — Haldi</div>
+                    <div class="event-item"><span class="event-date">23 Nov 2025</span> — Mehndi</div>
+                    <div class="event-item"><span class="event-date">25 Nov 2025</span> — Main Wedding Ceremony</div>
+                    <p class="note">All celebrations before the main wedding will be held in Mainpuri, Uttar Pradesh.</p>
+                </div>
+
+                <div class="footer">Rajput Family • With Respect & Warmth</div>
+            </div>
+        </div>
+
+        <!-- Page 2: About the Couple -->
+        <div id="couple" class="page">
+            <div class="container">
+                <h2>About the Bride & Groom</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="formal-text hindi-text">
+                    <p class="formal-text-large">॥ श्री गणेशाय नमः ।।</p>
+                    <p>॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्र‌भा निर्विधनं कुरुते देव सर्वकार्येषु सर्वदा ॥</p>
+                    
+                    <div class="ornamental-line-short"></div>
+                    
+                    <p style="margin-top: 40px;">मान्यवर,</p>
+                    
+                    <p style="margin-top: 30px;">परमपिता परमेश्वर की असीम अनुकम्पा से मेरी प्रिय सुपुत्री</p>
+                    
+                    <p class="formal-text-large" style="margin: 30px 0;">सौ० का० शैफाली</p>
+                    
+                    <p>सुपौत्री : स्व. श्रीमती सरस्वती देवी एवं स्व. श्री धीरी सिंह राजपूत</p>
+                    <p>सुपुत्री : श्रीमती कुसुमलता राजपूत एवं श्री अनार सिंह राजपूत</p>
+                    <p>निवासी : मैनपुरी</p>
+                    
+                    <div class="ornamental-line" style="margin: 50px auto;"></div>
+                    
+                    <p class="formal-text-large">चि० विवेक</p>
+                    
+                    <p style="margin-top: 20px;">सुपौत्र : स्व. श्रीमती चन्दा देवी एवं स्व. श्री मदनगोपाल राजपूत</p>
+                    <p>सुपुत्र : श्रीमती मीरा एवं श्री संतोष राजपूत (एडवोकेट)</p>
+                    <p>निवास : उज्जैन</p>
+                </div>
+
+                <div class="ornamental-line"></div>
+                <p class="subtitle" style="font-size: 1.1rem; margin-top: 40px;">May their bond grow deeper with trust, love, and blessings.</p>
+            </div>
+        </div>
+
+        <!-- Page 3: Swagatkarta / Hosts -->
+        <div id="hosts" class="page">
+            <div class="container">
+                <h2 class="hindi-text">स्वागतकर्ता</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="names-column hindi-text">
+                    <div class="name-item">श्रीमती मित्तलेश राजपूत</div>
+                    <div class="name-item">श्री विनय राजपूत</div>
+                    <div class="name-item">श्रीमती गिरजा राजपूत</div>
+                    <div class="name-item">डॉ. राजकुमार राजपूत</div>
+                </div>
+
+                <div class="ornamental-line"></div>
+                <p class="subtitle hindi-text" style="font-size: 1.2rem; margin-top: 40px;">आपकी उपस्थिति हमारे लिए परम सम्मान की बात है।</p>
+            </div>
+        </div>
+
+        <!-- Page 4: Darshanabhilashi / Family Members -->
+        <div id="family" class="page">
+            <div class="container">
+                <h2 class="hindi-text">दर्शनाभिलाषी एवं पारिवारिक सदस्य</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="names-column hindi-text">
+                    <div class="name-item">दीप्ति वर्मा</div>
+                    <div class="name-item">नितीश कुमार वर्मा (Adv.)</div>
+                    <div class="name-item">जितिन कुमार वर्मा</div>
+                    <div class="name-item">औजस्य राजपूत</div>
+                    <div class="name-item">तेजस राजपूत</div>
+                    <div class="name-item">सोनू</div>
+                    <div class="name-item">मोनू</div>
+                    <div class="name-item" style="margin-top: 30px; font-style: italic;">एवं समस्त राजपूत परिवार</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: Blessings Page -->
+        <div id="blessings" class="page">
+            <div class="container">
+                <h2 class="hindi-text">मंगल आशीष</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="blessing-text hindi-text">
+                    <p>आप सभी के आशीर्वाद से यह बंधन और भी पवित्र एवं दिव्य बने…</p>
+                    <div class="ornamental-line-short"></div>
+                    <p>वर–वधु को मंगलमय भविष्य की हार्दिक शुभकामनाएँ।</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 6: Contact / Event Details -->
+        <div id="contact" class="page">
+            <div class="container">
+                <h2>Event Details & Contact</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="venue-details">
+                    <div class="venue-item">
+                        <strong>Sangeet</strong><br>
+                        19 Nov 2025 — After 2 PM, Dinner 6 PM<br>
+                        Kamla Guest House, Mainpuri, UP
+                    </div>
+
+                    <div class="venue-item">
+                        <strong>Tel Ceremony</strong><br>
+                        21 Nov 2025<br>
+                        Mainpuri, UP
+                    </div>
+
+                    <div class="venue-item">
+                        <strong>Haldi</strong><br>
+                        22 Nov 2025<br>
+                        Mainpuri, UP
+                    </div>
+
+                    <div class="venue-item">
+                        <strong>Mehndi</strong><br>
+                        23 Nov 2025<br>
+                        Mainpuri, UP
+                    </div>
+
+                    <div class="venue-item">
+                        <strong>Main Wedding Ceremony</strong><br>
+                        25 Nov 2025<br>
+                        Agra, UP
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <p class="placeholder">Exact Timings: ______________</p>
+                    <p class="placeholder">Family Contact: ______________</p>
+                </div>
+
+                <div class="footer" style="margin-top: 40px;">Thank you for being a part of our celebration.</div>
+            </div>
+        </div>
+
+        <!-- Page 7: Preshak / Well-wishers -->
+        <div id="wellwishers" class="page">
+            <div class="container">
+                <h2 class="hindi-text">प्रेषक एवं शुभचिंतक</h2>
+                <div class="ornamental-line"></div>
+
+                <div class="names-column">
+                    <div class="name-item">Vineet</div>
+                    <div class="name-item">Jai Singh Verma (Forest Vibhaag)</div>
+                    <div class="name-item">Suraj Singh Verma (LIC)</div>
+                    <div class="name-item">Alok Kumar Verma (Block Development Officer)</div>
+                    <div class="name-item">Tularam Verma</div>
+                    <div class="name-item">Navab Singh Verma</div>
+                </div>
+
+                <div class="footer" style="margin-top: 60px;">
+                    Rajput Family<br>
+                    <span style="font-size: 1rem; letter-spacing: 1px;">Celebrating Love, Tradition & Unity</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const state = {
+            currentPage: 'home',
+            splashShown: false
+        };
+
+        // DOM Elements
+        const splashScreen = document.getElementById('splashScreen');
+        const mainWebsite = document.getElementById('mainWebsite');
+        const enterBtn = document.getElementById('enterBtn');
+        const gateLeft = document.getElementById('gateLeft');
+        const gateRight = document.getElementById('gateRight');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        // Enter Website Function
+        function enterWebsite() {
+            if (state.splashShown) return;
+            state.splashShown = true;
+
+            // Open gates
+            gateLeft.classList.add('open');
+            gateRight.classList.add('open');
+
+            // Hide splash screen and show main website after animation
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+                mainWebsite.classList.add('visible');
+                
+                // Remove splash screen from DOM after fade out
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 800);
+            }, 2500);
+        }
+
+        // Show Page Function
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                state.currentPage = pageId;
+            }
+            
+            // Update bottom nav active state
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.page === pageId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Close menu if open
+            closeMenu();
+            
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Open Menu Function
+        function openMenu() {
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Menu Function
+        function closeMenu() {
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners
+        enterBtn.addEventListener('click', enterWebsite);
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // Close menu when clicking outside
+        menuOverlay.addEventListener('click', (e) => {
+            if (e.target === menuOverlay) {
+                closeMenu();
+            }
+        });
+
+        // Menu links
+        const menuLinks = document.querySelectorAll('.menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const page = link.dataset.page;
+                showPage(page);
+            });
+        });
+
+        // Bottom nav items
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const page = item.dataset.page;
+                if (page === 'more') {
+                    openMenu();
+                } else {
+                    showPage(page);
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // ESC to close menu
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                closeMenu();
+            }
+            // Enter to skip splash screen
+            if (e.key === 'Enter' && !state.splashShown) {
+                enterWebsite();
+            }
+        });
+
+        // Auto-enter after 5 seconds (optional)
+        setTimeout(() => {
+            if (!state.splashShown) {
+                enterWebsite();
+            }
+        }, 8000);
+    </script>
+</body>
+</html>
